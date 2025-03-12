@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>אתר איפור מקצועי - גרסה מתקדמת</title>
+    <!-- Inline CSS with accessibility, advanced features, and mobile responsiveness -->
+    <style>
+        /* 1 */ /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        /* 6 */ 
+        /* Body styles */
+        body {
+          background: linear-gradient(135deg, rgba(106, 13, 173, 0.7), rgba(74, 144, 226, 0.7)), 
+                      url('orimage.jpg'); /* החלף בכתובת התמונה שלך */
+          background-size: cover; /* התאמת התמונה לגודל המסך */
+          background-position: center; /* מיקום התמונה במרכז */
+          background-attachment: fixed; /* תמונה קבועה בגלילה */
+          color: #fff;
+          line-height: 1.6;
+          overflow-x: hidden;
+          font-family: 'Arial', sans-serif;
+}
+
+        /* 12 */
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        /* 21 */
+        /* Header styles */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        /* 29 */
+        /* Hamburger Menu styles for mobile */
+        #hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+        /* 35 */
+        /* Navigation styles */
+        nav {
+            margin-top: 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav a:hover,
+        nav a:focus {
+            color: #ffcc00;
+        }
+        /* 47 */
+        /* Main content area */
+        main {
+            max-width: 1200px;
+            margin: 100px auto 40px auto;
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        /* 56 */
+        /* Sections styling */
+        section {
+            margin-bottom: 40px;
+        }
+        /* 60 */
+        /* Gallery styles */
+        
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px; /* מרווחים בין התמונות */
+    }
+
+    .gallery img {
+        width: 200px; /* שנה לגודל הרצוי */
+        height: 200px; /* שנה לגודל הרצוי */
+        object-fit: cover; /* חיתוך ושמירה על פרופורציה */
+        border-radius: 10px; /* אופציונלי - פינות מעוגלות */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל כדי להבליט */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.1); /* אפקט הגדלה בריחוף */
+    }
+
+        .gallery img:hover,
+        .gallery img:focus {
+            transform: scale(1.1);
+        }
+        /* 72 */
+        /* Video container styles */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .video-container video {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .video-container video:hover,
+        .video-container video:focus {
+            transform: scale(1.05);
+        }
+        /* 85 */
+        /* Blog article styles */
+        article {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #6a0dad;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+        article h3 {
+            margin-bottom: 10px;
+        }
+        /* 93 */
+        /* Reviews section styles */
+        .review {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        /* 98 */
+        /* Floating Contact Form styles */
+        .floating-form {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #b893e7b9;
+            padding: 8px; /* הקטנת הריווח הפנימי עוד יותר */
+            border-radius: 6px; /* פינות פחות מעוגלות */
+            color: #000;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); /* צל יותר עדין */
+            width: 200px; /* הקטנת הרוחב */
+            font-size: 14px; /* הקטנת גודל הטקסט */
+        }
+        .floating-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .floating-form input,
+        .floating-form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .radio-group {
+              display: flex;
+              align-items: center;
+              gap: 10px; /* רווח בין האלמנטים */
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+        }
+        .floating-form button {
+            background: linear-gradient(135deg, #ff6a00, #2aa87e); /* רקע עם גרדיאנט בזווית של 135 מעלות, מצבע כתום לירוק */
+            color: #fff; /* צבע הטקסט - לבן */
+            border: none; /* מסיר את המסגרת של הכפתור */
+            padding: 10px; /* מוסיף ריווח פנימי בתוך הכפתור */
+            width: 100%; /* הכפתור יתפוס את כל הרוחב של האלמנט ההורה שלו */
+            border-radius: 5px; /* מעגל את הפינות של הכפתור */
+            cursor: pointer; /* משנה את הסמן ליד כאשר מעבירים עליו */
+            transition: transform 0.3s; /* מוסיף אנימציה כאשר הכפתור משתנה בגודל (לדוגמה, כאשר לוחצים עליו) */
+        }
+        .floating-form button:hover,
+        .floating-form button:focus {
+            transform: scale(1.05);
+        }
+        /* 121 */
+        /* Scroll-to-top button styles */
+        #scrollToTop {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: #6a0dad;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+        #scrollToTop:hover,
+        #scrollToTop:focus {
+            background: #3614cc;    /* כפתור חזרה למעלה  */
+        }
+        /* 133 */
+        /* Modal for gallery images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1500;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            margin: 5% auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #ff6a00;
+        }
+        /* 149 */
+        /* Theme toggle button styles */
+        #themeToggle {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #ff6a00;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+        #themeToggle:hover,
+        #themeToggle:focus {
+            background: #6a0dad;
+        }
+        /* 158 */
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            #hamburger {
+                display: block;
+            }
+            .floating-form {
+                width: 90%;
+                right: 5%;
+            }
+            .video-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        /* 173 */
+        /* Dark theme styles */
+        body.dark {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        body.dark header {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        body.dark main {
+            background: #1e1e1e;
+            color: #e0e0e0;
+        }
+        body.dark .modal-close {
+            color: #e0e0e0;
+        }
+        /* 181 */
+    </style>
+    <!-- End of CSS -->
+</head>
+<body>
+    <!-- 185: Skip link for accessibility -->
+    <a href="#mainContent" class="skip-link">דלג לתוכן</a>
+    <!-- 187: Header Section -->
+    <header role="banner">
+        <h1>אתר האיפור של אור נידם</h1>
+        <!-- 190: Hamburger Menu Button for mobile -->
+        <button id="hamburger" aria-label="תפריט"><span>&#9776;</span></button>
+        <nav role="navigation" aria-label="תפריט ראשי">
+            <ul>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="#videos">וידאו</a></li>
+                <li><a href="#blog">בלוג</a></li>
+                <li><a href="#reviews">ביקורות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- 203: Main Content Area -->
+    <main id="mainContent">
+        <!-- 205: About Section -->
+        <section id="about" tabindex="0">
+            <h2>אודות</h2>
+            <p>אור נידם היא מאפרת מקצועית עם ניסיון רב בתחום האיפור והיופי. האתר נועד להציג את עבודותיה ולהעניק טיפים למשתמשים.</p>
+        </section>
+        <!-- 211: Gallery Section with modal functionality -->
+        <section id="gallery" tabindex="0">
+            <h2>גלריה</h2>
+            <div class="gallery">
+                <img src="orImage.jpg" alt="איפור דוגמנית" loading="lazy" tabindex="0">
+                <img src="OrIm.jpg" alt="איפור ערב" loading="lazy" tabindex="0">
+                <img src="OrIm2.jpg" alt="איפור כלות" loading="lazy" tabindex="0">
+                <img src="OrIm3.jpg" alt="איפור אישי" loading="lazy" tabindex="0">
+                <img src="OrIm4.jpg" alt="איפור טבעי" loading="lazy" tabindex="0">
+            </div>
+        </section>
+        <!-- 221: Videos Section -->
+        <section id="videos" tabindex="0">
+            <h2>וידאו</h2>
+            <div class="video-container">
+                <video controls aria-label="וידאו הדגמה 1" tabindex="0">
+                    <source src="vidOr2.mp4" type="video/mp4">
+                    הדפדפן שלך אינו תומך בווידאו.
+                </video>
+                <video controls aria-label="וידאו הדגמה 2" tabindex="0">
+                    <source src="vidOr.mp4" type="video/mp4">
+                    הדפדפן שלך אינו תומך בווידאו.
+                </video>
+            </div>
+        </section>
+        <!-- 233: Blog Section -->
+        <section id="blog" tabindex="0">
+            <h2>בלוג</h2>
+            <article>
+                <h3>איך לבחור את האיפור המתאים?</h3>
+                <p>הנה כמה טיפים לבחירת האיפור המתאים לכל אירוע, כולל בחירת הצבעים המתאימים, סוגי המוצרים והשיטות לשמירה על האיפור לאורך זמן.</p>
+            </article>
+            <article>
+                <h3>מגמות האיפור לשנת 2025</h3>
+                <p>גלו את המגמות החדשות בעולם האיפור לשנת 2025, טכניקות חדשניות וסגנונות עכשוויים.</p>
+            </article>
+        </section>
+        <!-- 245: Reviews Section -->
+        <section id="reviews" tabindex="0">
+            <h2>ביקורות</h2>
+            <div id="reviews-list">
+                <div class="review">
+                    <p>"אור פשוט מדהימה! האיפור החזיק כל הערב וקיבלתי המון מחמאות." ⭐⭐⭐⭐⭐</p>
+                </div>
+                <div class="review">
+                    <p>"האיפור היה עמיד ונראה טבעי, ממליצה בחום!" ⭐⭐⭐⭐⭐</p>
+                </div>
+            </div>
+            
+            <p><strong>הוסף ביקורת</strong></p>
+            <form id="review-form">
+                <label for="review-text">חוות דעתך:</label>
+                <textarea id="review-text" required style="width: 100%; height: 100px; box-sizing: border-box;"></textarea>
+
+                <label for="rating">דירוג:</label>
+                  <select id="rating" required style="width: 100%; height: 40px; box-sizing: border-box;">
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="1">⭐</option>
+                </select>
+                
+                <button type="submit" style="
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 6px 15px rgba(255, 117, 140, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+        " onmouseover="this.style.background='linear-gradient(135deg, #ff758c, #ff7eb3)'; 
+                       this.style.transform='scale(1.1)'; 
+                       this.style.boxShadow='0 8px 20px rgba(255, 117, 140, 0.6)';" 
+          onmouseout="this.style.background='linear-gradient(135deg, #ff7eb3, #ff758c)'; 
+                       this.style.transform='scale(1)'; 
+                       this.style.boxShadow='0 6px 15px rgba(255, 117, 140, 0.4)';">
+            <span style="position: relative; z-index: 2;">שלח ביקורת</span>
+        </button>
+            </form>
+        </section>        
+    </main>
+    <!-- 255: Floating Contact Form -->
+    <aside class="floating-form" id="contact" aria-label="טופס יצירת קשר">
+        <h3>צור קשר</h3>
+        <form action="#" method="post" novalidate>
+            <label for="fullname">שם מלא</label>
+            <input type="text" id="fullname" name="fullname" placeholder="הזן את שמך" required>
+            <label for="phone">מספר טלפון</label>
+            <input type="tel" id="phone" name="phone" placeholder="הזן את מספר הטלפון" required>
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" placeholder="הזן את האימייל שלך" required>
+            <label for="comments">הערות</label>
+            <textarea id="comments" name="comments" placeholder="כתוב את התוספות כאן" rows="4"></textarea>
+            <label for="comments">בחר שעה כדי שאגיע אליכם</label>
+            <select name="country" id="country">
+                <option value="09:30">09:30</option>
+                <option value="10:30">10:30</option>
+                <option value="11:30">11:30</option>
+                <option value="12:30">12:30</option>
+                <option value="13:30">13:30</option>
+                <option value="14:30">14:30</option>
+                <option value="15:30">15:30</option>
+                <option value="16:30">16:30</option>
+                <option value="17:30">17:30</option>
+                <option value="18:30">18:30</option>
+                <option value="19:30">19:30</option>
+                <option value="20:30">20:30</option>
+            </select>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="male"> יהודיה</label>
+                <label><input type="radio" name="gender" value="female"> גויה</label>
+            </div>
+            <label for="comments"></label>
+            <button type="submit">שלח</button>
+        </form>
+    </aside>
+    <!-- 268: Scroll-to-top button -->
+    <button id="scrollToTop" aria-label="חזרה למעלה">↑</button>
+    <!-- 270: Modal for Gallery Images -->
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <span class="modal-close" id="modalClose" aria-label="סגור">&times;</span>
+        <img class="modal-content" id="modalImage" alt="תצוגה מוגדלת">
+    </div>
+    <!-- 276: Theme Toggle Button -->
+    <button id="themeToggle" aria-label="החלף נושא">החלף נושא</button>
+    <!-- 278: JavaScript for interactivity -->
+    <script>
+          document.getElementById("review-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        let reviewText = document.getElementById("review-text").value;
+        let rating = document.getElementById("rating").value;
+        
+        if (reviewText.trim() !== "") {
+            let reviewDiv = document.createElement("div");
+            reviewDiv.classList.add("review");
+            reviewDiv.innerHTML = `<p>"${reviewText}" ${'⭐'.repeat(rating)}</p>`;
+            
+            document.getElementById("reviews-list").appendChild(reviewDiv);
+            
+            document.getElementById("review-form").reset();
+        }
+    });
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+        // Scroll-to-top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // Gallery modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalClose = document.getElementById('modalClose');
+        const galleryImages = document.querySelectorAll('.gallery img');
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImg.src = img.src;
+            });
+            img.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    modal.style.display = 'block';
+                    modalImg.src = img.src;
+                }
+            });
+        });
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        // Form validation
+        const form = document.querySelector('.floating-form form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullname = document.getElementById('fullname');
+            const phone = document.getElementById('phone');
+            const email = document.getElementById('email');
+            if (!fullname.value || !phone.value || !email.value) {
+                alert('אנא מלא את כל השדות החיוניים.');
+                return;
+            }
+            alert('הטופס נשלח בהצלחה!');
+            form.reset();
+        });
+        // Accessibility: focus management for modal
+        modal.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+        // Language toggle (Hebrew/English)
+        const languageToggle = document.createElement('button');
+        languageToggle.id = 'languageToggle';
+        languageToggle.innerText = 'EN/HE';
+        languageToggle.style.position = 'fixed';
+        languageToggle.style.top = '130px';
+        languageToggle.style.right = '20px';
+        languageToggle.style.background = '#4a90e2';
+        languageToggle.style.color = '#fff';
+        languageToggle.style.padding = '10px 15px';
+        languageToggle.style.border = 'none';
+        languageToggle.style.borderRadius = '5px';
+        languageToggle.style.cursor = 'pointer';
+        languageToggle.addEventListener('click', () => {
+            document.documentElement.lang = document.documentElement.lang === 'he' ? 'en' : 'he';
+            alert('שפת האתר הוחלפה ל' + (document.documentElement.lang === 'he' ? 'עברית' : 'אנגלית'));
+        });
+        document.body.appendChild(languageToggle);
+        // Hamburger menu functionality for mobile
+        const hamburger = document.getElementById('hamburger');
+        const navUl = document.querySelector('nav ul');
+        hamburger.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
+    </script>
+    <!-- End of JavaScript -->
+    
+</body>
+</html>
