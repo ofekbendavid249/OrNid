@@ -38,11 +38,11 @@
         <section id="gallery" tabindex="0">
             <h2>גלריה</h2>
             <div class="gallery">
-                <img src="orImage.jpg" alt="איפור דוגמנית" loading="lazy" tabindex="0">
-                <img src="OrIm.jpg" alt="איפור ערב" loading="lazy" tabindex="0">
-                <img src="OrIm2.jpg" alt="איפור כלות" loading="lazy" tabindex="0">
-                <img src="OrIm3.jpg" alt="איפור אישי" loading="lazy" tabindex="0">
-                <img src="OrIm4.jpg" alt="איפור טבעי" loading="lazy" tabindex="0">
+                <img src="./assets/images/orImage.jpg" alt="איפור דוגמנית" loading="lazy" tabindex="0">
+                <img src="./assets/images/OrIm.jpg" alt="איפור ערב" loading="lazy" tabindex="0">
+                <img src="./assets/images/OrIm2.jpg" alt="איפור כלות" loading="lazy" tabindex="0">
+                <img src="./assets/images/OrIm3.jpg" alt="איפור אישי" loading="lazy" tabindex="0">
+                <img src="./assets/images/OrIm4.jpg" alt="איפור טבעי" loading="lazy" tabindex="0">
             </div>
         </section>
         <!-- 221: Videos Section -->
@@ -50,11 +50,11 @@
             <h2>וידאו</h2>
             <div class="video-container">
                 <video controls aria-label="וידאו הדגמה 1" tabindex="0">
-                    <source src="vidOr2.mp4" type="video/mp4">
+                    <source src="./assets/videos/vidOr2.mp4" type="video/mp4">
                     הדפדפן שלך אינו תומך בווידאו.
                 </video>
                 <video controls aria-label="וידאו הדגמה 2" tabindex="0">
-                    <source src="vidOr.mp4" type="video/mp4">
+                    <source src="./assets/videos/vidOr.mp4" type="video/mp4">
                     הדפדפן שלך אינו תומך בווידאו.
                 </video>
             </div>
@@ -97,22 +97,9 @@
                     <option value="1">⭐</option>
                 </select>
                 
-                <button type="submit" style="
-            background: linear-gradient(135deg, #ff7eb3, #ff758c);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s ease-in-out;
-            box-shadow: 0 6px 15px rgba(255, 117, 140, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            position: relative;
-            overflow: hidden;
-        " onmouseover="this.style.background='linear-gradient(135deg, #ff758c, #ff7eb3)'; 
+                <button id= "reviewBtn"  type="submit" 
+            
+         onmouseover="this.style.background='linear-gradient(135deg, #ff758c, #ff7eb3)'; 
                        this.style.transform='scale(1.1)'; 
                        this.style.boxShadow='0 8px 20px rgba(255, 117, 140, 0.6)';" 
           onmouseout="this.style.background='linear-gradient(135deg, #ff7eb3, #ff758c)'; 

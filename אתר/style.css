@@ -326,4 +326,20 @@ body.dark main {
 body.dark .modal-close {
     color: #e0e0e0;
 }
-/* 181 */
+#reviewBtn{
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 6px 15px rgba(255, 117, 140, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    overflow: hidden;
+
+}
