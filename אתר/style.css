@@ -160,6 +160,15 @@ article h3 {
 }
 /* 98 */
 /* Floating Contact Form styles */
+@media (max-width: 600px) {
+    .floating-form {
+        width: 150px; /* הקטנת הרוחב לפלאפונים */
+        font-size: 12px; /* הקטנת הפונט */
+        bottom: 10px; /* התאמת מיקום */
+        left: 10px;
+        padding: 6px; /* התאמת הריווח */
+    }
+}
 .floating-form {
     position: fixed;
     bottom: 20px;
